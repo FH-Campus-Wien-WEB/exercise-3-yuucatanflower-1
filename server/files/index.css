@@ -1,77 +1,285 @@
-@import url(base.css);
-
-h1 {
-  font-size: 200%;
-  margin: 8px 0px;
-}
-
-/* Constrain the page to the viewport */
-html, body {
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #1e1e24;
+  color: #e0e0e0;
+  margin: 0;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Center the nav's header and list */
+header {
+  grid-area: h;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0;
+  background-color: #1a1a1f;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+header h1 {
+  font-weight: 800;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
 nav {
+  grid-area: n;
+  display: flex;
+  flex-direction: column; /* Mobile first stack */
+  gap: 8px;
+  padding: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+nav button {
+  background-color: transparent;
+  color: #b3b3b3;
+  border: 1px solid #444;
+  padding: 12px 20px;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: #8b5cf6;
+  border-color: #8b5cf6;
+  color: #ffffff;
+  transform: translateX(6px); /* Slide right effect */
+}
+
+main {
+  grid-area: m;
+  padding: 30px 20px;
+  overflow-y: auto; /* Scroll only the movies */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* navigation buttons have full width */
-nav button {
-  width: 100%;
+footer {
+  grid-area: f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #1a1a1f;
+  color: #888;
+  font-size: 0.9rem;
 }
 
-/* Remove unnecessary space and bullets from the lists */
-ul {
-  padding: 0px;
-  margin: 16px;
-  list-style-type: none;
-}
 
-/* Task 2.1. Lay out the childs of the 'body' using Grid Template Areas. */
-
-
-/* Task 3.1. Make the header element a flex container and center its children
-   vertically and horizontally.
- */
-
-
-/* Task 3.2. Make the list items of the unordered list in the nav element a flex container, 
-   use column direction and center the child items
- */
-
-/* Task 3.3. Make the main element a Flexbox container */
-
-
-/* Task 3.4. Make the footer's ul a Flexbox container */
-
-
-/* From here on styling from exercise 1 */
-img {
-  border-radius: 12px;
-}
 
 article {
-  background-color: lightgray;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+
+  background-color: #ffffff;
   border-radius: 16px;
-  padding: 16px;
-  width: 384px;
-  margin: 8px;
+  margin: 0 0 40px 0;
+  padding: 35px;
+  width: 100%;
+  max-width: 1050px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-a {
-  color: beige;
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-span {
-  margin-right: 4px;
+.poster-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  flex-shrink: 0;
 }
 
-.genre {
-  padding: 4px 8px;
-  border: solid black 1px;
+.poster-sidebar img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.ratings-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.rating-box {
+  flex: 1;
+  background-color: #f8fafc;
+  padding: 12px 10px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.rating-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 4px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.rating-score {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+
+.movie-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-content h1 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #1e293b;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.movie-content h2 {
+  font-size: 1.05rem;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 6px;
+}
+
+.movie-content ul {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.movie-content p {
+  line-height: 1.7;
+  color: #475569;
+  font-size: 1.05rem;
+  margin: 10px 0;
+}
+
+/* The Action Edit Button */
+.movie-content button {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 8px 18px;
   border-radius: 6px;
-  background-color: darkgray;
-  font-weight: bold;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(139, 92, 246, 0.25);
+  margin-bottom: 15px;
+  align-self: flex-start;
+}
+
+.movie-content button:hover {
+  background-color: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(139, 92, 246, 0.35);
+}
+
+/* Genre Tags */
+.genre {
+  display: inline-block;
+  background-color: #334155;
+  color: #f8fafc;
+  padding: 6px 14px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease;
+}
+
+.genre:hover {
+  background-color: #8b5cf6;
+}
+
+
+/* Mobile View Setup */
+@media (max-width: 850px) {
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav button {
+    text-align: center;
+    flex: 1 1 calc(33% - 10px);
+  }
+
+  article {
+    flex-direction: column; /* Stacks image on top of text */
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .poster-sidebar {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .movie-content h1, .movie-content h2 {
+    text-align: center;
+  }
+
+  .movie-content button {
+    align-self: center;
+  }
+}
+
+/* Desktop View Setup (Grid Areas) */
+@media (min-width: 851px) {
+  body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+            "h h"
+            "n m"
+            "f f";
+  }
+
+  nav {
+    flex-direction: column;
+    justify-content: flex-start;
+    border: none;
+  }
 }
