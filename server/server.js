@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const movieModel = require('./movie-model.js'); // Your data is imported as 'movieModel'
+const movieModel = require('./movie-model.js'); //data is imported as 'movieModel'
 
 const app = express();
 
@@ -17,7 +17,6 @@ app.use(express.static(path.join(__dirname, 'files')));
    that are currently in the movie model.
 */
 app.get('/genres', function (req, res) {
-  // FIXED: Changed 'movies' to 'movieModel' to match your import!
   const allMovies = Object.values(movieModel);
   const uniqueGenres = new Set();
 
